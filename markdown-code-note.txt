@@ -1,0 +1,101 @@
+1. comment
+    <!-- This is comment -->
+
+2.divider
+    <hr>
+    ___ (3 underscores)
+    --- (3 hyphens)
+    *** (3 asterisks)
+
+3. Heading
+    #      (largest heading)
+    ##
+    ###
+    ####
+    #####
+    ###### (smallest heading)
+
+    # This is Heading
+
+4. paragraph
+    this is paragraph
+    <p>this is paragraph</p> (html)
+
+5. italic 
+    space
+    _text_
+
+    <i>text</i> (html)
+
+6. bold
+    __text__ (double underscore each side of text)
+    **text**
+
+7. delete
+    ~~text~~
+
+8. Inline
+    `text`
+
+9. multiple line
+    ```
+    text
+    text
+    ```
+
+10. multiple line for programming language
+    ``` languageName
+    code
+    code
+    ```
+
+    ``` cpp
+    code
+    code
+    ```
+
+11. ordered list
+    1. item1
+    2. item2
+    3. item3
+
+12. unordered list
+    - item1
+    - item2
+    - item3
+
+13. task list
+    - [x] item1 (complete sign)
+    - [] item2  (uncomplete)
+
+14. Link
+  *automatic Link
+    url (direct write url)
+
+  *disable Link 
+    `url`
+
+  *title based Link
+    [title](url)
+
+  *separated Link
+    [title](Name)
+    <!--bottom of md code-->
+    [title]:url
+
+15. Image
+    ![alt](./image.format)
+    example:
+    ![natural beauty of bangladesh](./bangladesh.jpg)
+
+    <img src="./image.format"
+        alt="alt-text" height="" width=""> (html style)
+
+16. Table
+    | header1 | header2 |
+    | --- | --- |
+    | data1 | data2 |
+    | data3 | data4 |
+
+    
+
