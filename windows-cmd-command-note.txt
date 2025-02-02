@@ -23,5 +23,22 @@
 7. open file
 	start fileName.extension
 
+8. change existing file name
+	ren oldFileName.extension newFileName.extension
+	if file name contains space (use quotes)
+	ren "old file name.extension" "new file name.extension"
+
+9. see current directory location
+	echo %cd%
+
+10. back previous directory
+	cd ..
+
+11. back again in command prompt (big output after show :)
+	q
+
+
+11. close the cmd
+	exit
 
 
