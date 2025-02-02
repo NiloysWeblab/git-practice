@@ -1,0 +1,14 @@
+1. git installation check or version check
+    git --version
+
+2. user name set on git globally(for all files)
+    git config --global user.name "your-name"
+
+3. user email set on git globally(for all repositories)
+    git config --global user.email "your-email.@example.com"
+
+4. user name set on git (for a specific repository)
+    git config  user.name "your-name"
+
+5. user email set on git (for a specific repository)
+    git config user.email "your-email.@example.com"
