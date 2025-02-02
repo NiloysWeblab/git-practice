@@ -1,0 +1,27 @@
+1. open drive
+	example:
+	for open D: drive
+	d: or D:
+
+2. open directory
+	cd directory name
+	example:
+	cd Programming
+
+3. see drive/directory's file
+	dir
+
+4. see drive/directory's file with hidden file
+	dir /a
+
+5. create new directory
+	mkdir newDirectoryName
+
+6. create new file
+	echo. > fileName.extension
+
+7. open file
+	start fileName.extension
+
+
+
