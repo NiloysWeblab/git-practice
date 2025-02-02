@@ -207,3 +207,155 @@ Git tracks files in three stages during version control:
 
 3. **Committed (Tracked State)**  
    After staging, the file is committed to the repository. Once committed, Git starts tracking the file, saving its version history for future reference.
+
+
+### **Tracking and Managing Changes in Git**  
+
+After modifying a file, the differences between the current and previous version can be checked using:  
+```sh
+git diff
+```  
+This helps to see what has changed before adding it to staging.  
+
+If needed, the file can be restored to its previous state before modification:  
+```sh
+git restore filename.txt
+```  
+Or, it can be added to the staging area for committing:  
+```sh
+git add filename.txt
+```  
+To verify the file's status:  
+```sh
+git status
+```  
+
+If a staged file needs to be removed from the staging area without deleting it, use:  
+```sh
+git restore --staged filename.txt
+```  
+Check the status again using:  
+```sh
+git status
+```  
+
+Once ready, commit the changes to save them in the repository:  
+```sh
+git commit -m "Commit message"
+```  
+To confirm the commit status:  
+```sh
+git status
+```  
+
+If a file is no longer needed in the repository but should remain in the working directory, remove it from tracking with:  
+```sh
+git rm --cached filename.txt
+```  
+Check the status after the removal:  
+```sh
+git status
+```  
+
+For efficiency, `git add` and `git commit` can be combined into a single command using `&&`:  
+```sh
+git add filename.txt && git commit -m "Commit message"
+```  
+Finally, use `git status` to verify the changes.
+
+Sure thing! Here it goes:
+
+---
+
+### **Viewing Commit History**  
+
+The `git log` command is used to see the history of commits in a repository. It provides detailed information about each commit, including who made the changes, when they were made, and a unique identifier for each commit.
+
+**Command:**  
+```sh
+git log
+```
+
+**Example Output:**  
+```
+commit a3c4f1b (HEAD -> main)
+Author: Your Name <your-email@example.com>
+Date:   Fri Feb 2 14:15:26 2025 +0000
+
+    Added initial project files
+```
+
+**Parts of the Commit Information:**  
+- **Commit Hashcode:** `a3c4f1b`  
+  - A unique identifier for this specific commit. It allows you to reference or revert to this exact state of the repository.  
+
+- **Author:** `Your Name <your-email@example.com>`  
+  - The username and email of the person who made the commit. This is set by `git config` and helps identify the contributor.  
+
+- **Date:** `Fri Feb 2 14:15:26 2025 +0000`  
+  - The exact time and date when the commit was made. Useful for tracking the timeline of changes.  
+
+- **Commit Message:** `Added initial project files`  
+  - A brief description of the changes made in this commit. It's important for understanding the purpose of the commit, especially when looking back at the history.  
+
+**Using `git log` Effectively:**  
+- To see a simpler, condensed version of the log:  
+  ```sh
+  git log --oneline
+  ```
+- To see changes along with commit messages:  
+  ```sh
+  git log -p
+  ```
+- To filter by author:  
+  ```sh
+  git log --author="Your Name"
+  ```
+
+`git log` is super handy for understanding the history of a project and for collaboration, so everyone knows what changes were made and why!
+
+### **Understanding `.gitignore` in Git**  
+
+The `.gitignore` file tells Git which files and directories to **ignore** and not track in the repository. This is useful for excluding temporary files, logs, dependencies, and system-generated files that don’t need version control.  
+
+#### **How `.gitignore` Works:**  
+- Prevents unnecessary files from being committed.  
+- Keeps the repository clean and organized.  
+- Avoids tracking sensitive or system files.  
+
+#### **Creating and Initializing `.gitignore`**  
+1. Create a `.gitignore` file in the root directory:  
+   ```sh
+   echo .gitignore > .gitignore
+   ```
+2. Open the file and add patterns for files or folders to ignore.  
+
+#### **What to Write in `.gitignore`**  
+You can list specific files, directories, or patterns. Examples:  
+```
+# Ignore all text files except important.txt
+*.txt  
+!important.txt  
+
+# Ignore all log files
+*.log  
+
+# Ignore node_modules folder
+node_modules/  
+
+# Ignore compiled binaries
+*.exe  
+
+# Ignore system files
+.DS_Store  
+Thumbs.db  
+```
+
+#### **Applying `.gitignore`**  
+After adding patterns, track the `.gitignore` file and commit it:  
+```sh
+git add .gitignore  
+git commit -m "Added .gitignore file"
+```
+
+Now, Git will **not track** the specified files, keeping your repository clean.
