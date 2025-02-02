@@ -195,6 +195,15 @@ dir /a
 
 Now, you can start tracking changes and managing version control.
 
+### **Three Stages of Local Repository Version Controlling**  
 
+Git tracks files in three stages during version control:  
 
+1. **Working Directory (Untracked Area)**  
+   When a file is created or modified, it remains in the working directory. At this stage, Git does not track the file, meaning it is untracked.  
 
+2. **Staging Area (Ready for Commit)**  
+   To track changes, the file must be added to the staging area. Once added, it becomes ready for the next commit. The staging area holds changes that are prepared to be saved.  
+
+3. **Committed (Tracked State)**  
+   After staging, the file is committed to the repository. Once committed, Git starts tracking the file, saving its version history for future reference.
