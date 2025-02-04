@@ -359,3 +359,140 @@ git commit -m "Added .gitignore file"
 ```
 
 Now, Git will **not track** the specified files, keeping your repository clean.
+
+### **`git reset` Commands**  
+
+The `git reset` command is used to **undo commits** and move the HEAD pointer to a previous state. It can reset commits in different ways, depending on the options used.  
+
+---
+
+### **1. `git reset HEAD^` (Mixed Reset - Default)**  
+- Moves the **HEAD** pointer one commit back.  
+- **Unstages** the last commit but keeps the file changes in the working directory.  
+- You can re-add and commit the changes again if needed.  
+
+**Example:**  
+```sh
+git reset HEAD^  
+```
+**Effect:** The commit is removed from the history, but the changes remain in the working directory.  
+
+---
+
+### **2. `git reset --hard HEAD^` (Hard Reset - DANGER)**  
+- Moves **HEAD** one commit back **and permanently deletes** the changes.  
+- **All modifications in the last commit will be lost.**  
+
+**Example:**  
+```sh
+git reset --hard HEAD^  
+```
+**Effect:** The commit is erased, and all changes from that commit are removed from both the staging area and working directory.  
+
+**Warning:** Cannot be undone unless you have a backup or remember the commit hash.  
+
+---
+
+### **3. `git reset --soft HEAD~<number>` (Soft Reset)**  
+- Moves **HEAD** back by a specified number of commits.  
+- **Does not remove changes**; all modified files remain **staged**.  
+
+**Example (reset the last 2 commits):**  
+```sh
+git reset --soft HEAD~2  
+```
+**Effect:** The last two commits are undone, but their changes remain **ready for commit**.  
+
+---
+
+### **When to Use Each Type of Reset?**  
+| Command | Effect | Use Case |
+|---------|--------|----------|
+| `git reset HEAD^` | Undo last commit, keep changes unstaged | When you committed too soon but need to edit files |
+| `git reset --hard HEAD^` | Undo commit and delete changes permanently | When you want to remove commits completely |
+| `git reset --soft HEAD~<n>` | Undo multiple commits, keep changes staged | When you want to rework previous commits |
+
+These commands help manage commits efficiently while avoiding unnecessary mistakes.
+
+### **"Checkout": A Safer Way to Move Between Commits Instead of `git reset`**  
+
+When working with Git, sometimes you need to go back to a previous commit. There are two main ways to do this:  
+
+1. **`git reset`** – Moves the branch pointer and can modify history.  
+2. **`git checkout`** – A safer way to view or switch to a previous commit without modifying history.  
+
+Using `git reset` can **permanently remove commits**, so a safer approach is to use `git checkout` when exploring old commits.  
+
+---
+
+### **1. Checking Out a Previous Commit (`git checkout <commitId>`)**  
+- Moves to a specific commit without deleting history.  
+- The repository enters a **detached HEAD** state.  
+- To find commit IDs, use:  
+  ```sh
+  git log --oneline
+  ```
+  Example output:  
+  ```
+  f7a3c92 Fixed login issue
+  b519fd2 Updated README file
+  8c9e0d1 Initial commit
+  ```
+  Here, `f7a3c92` is the latest commit.  
+
+- **To move to an old commit (e.g., `b519fd2`):**  
+  ```sh
+  git checkout b519fd2
+  ```
+  **Effect:** Moves the working directory to the state of `b519fd2`.  
+
+---
+
+### **2. Checking Out the Master/Main Branch (`git checkout master`)**  
+- Returns to the latest commit in the `master` branch.  
+- Useful after checking out an old commit.  
+
+```sh
+git checkout master
+```
+👉 **Effect:** Switches back to the latest commit in `master`.  
+
+If using `main`:  
+```sh
+git checkout main
+```  
+
+---
+
+### **Key Differences and Best Practices**  
+- **`git reset`** alters commit history and should be used with caution.  
+- **`git checkout <commitId>`** allows safely navigating to previous commits without modifying history.  
+- **Use at least the first 7 characters of a commit ID**, which can be found using `git log --oneline`.  
+- Before making new commits, always return to the main branch using `git checkout master`.
+
+### **Git Aliases: Creating Shortcuts for Commands**  
+
+Git allows creating **aliases** to shorten long commands, making them easier to use.  
+
+#### **Setting Up an Alias**  
+To create an alias, use the following command:  
+```sh
+git config --global alias.shortcut "command"
+```  
+For example, to shorten `git status` to `git st`:  
+```sh
+git config --global alias.st "status"
+```  
+Now, running `git st` will execute `git status`.  
+
+#### **Removing an Alias**  
+To remove an alias, use:  
+```sh
+git config --global --unset alias.aliasName
+```  
+For example, to remove the `st` alias:  
+```sh
+git config --global --unset alias.st
+```  
+Aliases help speed up workflow by reducing typing effort.
+
