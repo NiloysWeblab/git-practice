@@ -851,3 +851,77 @@ HTML way:
 ---
 
 Markdown is widely used in GitHub for documentation, project descriptions, and formatting discussions. It is simple, effective, and enhances readability without needing complex HTML or CSS.
+
+### **Connecting a Local Repository with a Remote Repository in Git**  
+
+A local Git repository can be connected to a remote repository for code storage, collaboration, and version control.
+
+---
+
+#### **1. Checking Remote Repository Status**  
+To check if a remote repository is already connected, use the following command:  
+
+```sh
+git remote -v
+```
+
+**Output Scenarios:**
+- No output means no remote repository is connected.
+- If a remote is connected, the output will look like this:  
+  ```
+  origin  https://github.com/username/repository.git (fetch)
+  origin  https://github.com/username/repository.git (push)
+  ```
+
+---
+
+#### **2. Connecting a Local Repository to a Remote Repository**  
+To add a remote repository, use the following command:  
+
+```sh
+git remote add origin <remote-url>
+```
+
+- `<remote-url>` should be replaced with the actual repository URL.  
+- `origin` acts as an alias for the repository URL, making future commands easier.
+
+**Example:**  
+
+```sh
+git remote add origin https://github.com/user/myproject.git
+```
+
+To confirm the connection, check the remote list again:
+
+```sh
+git remote -v
+```
+
+**Expected Output:**
+```
+origin  https://github.com/user/myproject.git (fetch)
+origin  https://github.com/user/myproject.git (push)
+```
+
+---
+
+The local repository is now connected to the remote repository and can be used for pushing and pulling changes.
+
+### **Getting the Remote URL from GitHub**  
+
+1. Open the GitHub repository. 
+<div align="center">
+<img src="./assets/remote_url_1.png" width=80%>
+</div>
+
+2. Click on the green **"Code"** button. 
+3. A window will appear showing the **HTTPS URL**.  
+4. Copy this URL, which is the **remote repository URL**. 
+
+<div align="center">
+<img src="./assets/remote_url_2.png" width=80%>
+</div>
+
+For the **first-time setup**, verification may be required. This can be done using:  
+- **HTTPS Authentication:** GitHub username and personal access token.  
+- **SSH Authentication:** SSH key setup in GitHub.
